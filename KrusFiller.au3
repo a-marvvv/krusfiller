@@ -7,10 +7,10 @@
 #AutoIt3Wrapper_Compression=4
 #EndRegion
 Opt("WinTitleMatchMode", 2)
-Global Const $Rus = '00000419'; Раскладка русского языка
-Global Const $Eng = '00000409'; Раскладка английского языка
-Global Const $Win_Name = "Карточка устройства "
-Global Const $info_str="Заполнялка КРУС v0.1" & @CRLF & "Telegram: @DonAlexey"
+Global Const $Rus = '00000419'; Р Р°СЃРєР»Р°РґРєР° СЂСѓСЃСЃРєРѕРіРѕ СЏР·С‹РєР°
+Global Const $Eng = '00000409'; Р Р°СЃРєР»Р°РґРєР° Р°РЅРіР»РёР№СЃРєРѕРіРѕ СЏР·С‹РєР°
+Global Const $Win_Name = "РљР°СЂС‚РѕС‡РєР° СѓСЃС‚СЂРѕР№СЃС‚РІР° "
+Global Const $info_str="Р—Р°РїРѕР»РЅСЏР»РєР° РљР РЈРЎ v0.1" & @CRLF & "Telegram: @DonAlexey"
 Global Const $config = @ScriptDir & "\config.ini"
 Monitor()
 
@@ -35,7 +35,7 @@ Func Fill()
 	  $Data = GetData()
 	  $CData = GetIni()
 	  If $Data[1] <> $CData[1][1] Then
-		 MsgBox($MB_ICONWARNING, "", "В буфере обмена данные не для " & $CData[1][1])
+		 MsgBox($MB_ICONWARNING, "", "Р’ Р±СѓС„РµСЂРµ РѕР±РјРµРЅР° РґР°РЅРЅС‹Рµ РЅРµ РґР»СЏ " & $CData[1][1])
 		 Return
 	  EndIf
 
@@ -49,7 +49,7 @@ Func Fill()
 			SetControlText($ControlID,$Data[$i])
 		 EndIf
 	  Next
-	  MsgBox($MB_ICONWARNING, "", "Заполнено")
+	  MsgBox($MB_ICONWARNING, "", "Р—Р°РїРѕР»РЅРµРЅРѕ")
    EndFunc
 
    Func GetIni()
@@ -68,7 +68,7 @@ EndFunc
 Func CheckDev()
    IniReadSection($config, GetDev())
    If @error Then
-	  MsgBox($MB_ICONWARNING, "", "Карточка устройства не поддерживается")
+	  MsgBox($MB_ICONWARNING, "", "РљР°СЂС‚РѕС‡РєР° СѓСЃС‚СЂРѕР№СЃС‚РІР° РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ")
 	  Return 1
    Else
 	  Return 0
@@ -77,11 +77,11 @@ EndFunc
 
 Func CreateMenu($hGUI)
 
-  $aPos = ControlGetPos($hGUI, "", "Ок")
+  $aPos = ControlGetPos($hGUI, "", "РћРє")
   $gui = GUICreate("", $aPos[2]-10, $aPos[3], $aPos[0] - 100, $aPos[1], $WS_POPUP)
   DllCall("user32.dll", "hwnd", "SetParent", "hwnd", $gui, "hwnd", $hGUI)
-  $menu = GUICtrlCreateMenu("Заполнить")
-  $m_item1  = GUICtrlCreateMenuItem ("Из буфера обмена", $menu)
+  $menu = GUICtrlCreateMenu("Р—Р°РїРѕР»РЅРёС‚СЊ")
+  $m_item1  = GUICtrlCreateMenuItem ("РР· Р±СѓС„РµСЂР° РѕР±РјРµРЅР°", $menu)
   GUICtrlCreateMenuitem ("",$menu) ; separator
   $m_item_i = GUICtrlCreateMenuitem ("Info",$menu)
   GUISetState()
